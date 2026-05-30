@@ -1,0 +1,15 @@
+{
+  "name": "ثبت مشخصات مشتریان",
+  "short_name": "مشتریان",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f0c29",
+  "theme_color": "#1a1a2e",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/869/869636.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
