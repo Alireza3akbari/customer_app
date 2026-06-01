@@ -128,14 +128,27 @@ function jsonp(url) {
 async function loadCustomers() {
   try {
     const data = await jsonp(API);
-    customers = data.slice(1).filter(r => r[0] !== "" && r[0] !== undefined);
+
+    // حذف دو ردیف اول (A,B,C... و هدرها)
+    customers = data.slice(2).filter(row =>
+      row && row.some(cell => String(cell).trim() !== "")
+    );
+
     renderTable();
     renderEditSelect();
     updateInfoBox();
-    document.getElementById("editToggleCard").style.display = customers.length > 0 ? "block" : "none";
-  } catch(e) {
-    document.getElementById("infoBox").textContent = "⚠️ خطا در بارگذاری داده‌ها";
-    document.getElementById("tableBody").innerHTML = '<tr><td colspan="4" class="loading">⚠️ خطا در اتصال</td></tr>';
+
+    document.getElementById("editToggleCard").style.display =
+      customers.length > 0 ? "block" : "none";
+
+  } catch (e) {
+    console.error("Load Error:", e);
+
+    document.getElementById("infoBox").textContent =
+      "⚠️ خطا در بارگذاری داده‌ها";
+
+    document.getElementById("tableBody").innerHTML =
+      '<tr><td colspan="4" class="loading">⚠️ خطا در اتصال</td></tr>';
   }
 }
 
@@ -146,13 +159,21 @@ function updateInfoBox() {
 
 function renderTable() {
   const tbody = document.getElementById("tableBody");
-  if (customers.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="4" class="loading">هنوز مشتری ثبت نشده</td></tr>';
+
+  if (!customers || customers.length === 0) {
+    tbody.innerHTML =
+      '<tr><td colspan="4" class="loading">هنوز مشتری ثبت نشده</td></tr>';
     return;
   }
-  tbody.innerHTML = customers.map(c =>
-    "<tr><td>" + c[0] + "</td><td>" + c[1] + "</td><td>" + c[2] + "</td><td>" + c[4] + "</td></tr>"
-  ).join("");
+
+  tbody.innerHTML = customers.map((c, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td>${c[1] || ""}</td>
+      <td>${c[2] || ""}</td>
+      <td>${c[4] || ""}</td>
+    </tr>
+  `).join("");
 }
 
 function renderEditSelect() {
