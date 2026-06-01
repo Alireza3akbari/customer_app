@@ -8,204 +8,44 @@
 <link rel="manifest" href="manifest.json">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap');
-
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; }
-
-  body {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    min-height: 100vh;
-    color: #fff;
-    padding: 1rem;
-  }
-
-  h1 {
-    text-align: center;
-    color: #f0c040;
-    font-size: 1.5rem;
-    margin: 1rem 0 1.5rem;
-    text-shadow: 0 0 20px rgba(240,192,64,0.4);
-  }
-
-  .card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 1.2rem;
-    margin-bottom: 1.2rem;
-    backdrop-filter: blur(10px);
-  }
-
-  .section-title {
-    color: #f0c040;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(240,192,64,0.2);
-    padding-bottom: 0.4rem;
-  }
-
-  .edit-title {
-    color: #7dd3fc;
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(125,211,252,0.2);
-    padding-bottom: 0.4rem;
-  }
-
-  label {
-    display: block;
-    color: #ccc;
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-    margin-top: 0.8rem;
-  }
-
-  input, textarea, select {
-    width: 100%;
-    padding: 0.7rem 0.9rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 10px;
-    color: #fff;
-    font-family: 'Vazirmatn', sans-serif;
-    font-size: 0.95rem;
-    direction: rtl;
-    outline: none;
-    transition: border 0.2s;
-  }
-
-  input:focus, textarea:focus, select:focus {
-    border-color: #f0c040;
-    box-shadow: 0 0 8px rgba(240,192,64,0.3);
-  }
-
+  body { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; color: #fff; padding: 1rem; }
+  h1 { text-align: center; color: #f0c040; font-size: 1.5rem; margin: 1rem 0 1.5rem; text-shadow: 0 0 20px rgba(240,192,64,0.4); }
+  .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.2rem; margin-bottom: 1.2rem; backdrop-filter: blur(10px); }
+  .section-title { color: #f0c040; font-size: 1rem; font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid rgba(240,192,64,0.2); padding-bottom: 0.4rem; }
+  .edit-title { color: #7dd3fc; font-size: 1rem; font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid rgba(125,211,252,0.2); padding-bottom: 0.4rem; }
+  label { display: block; color: #ccc; font-size: 0.85rem; margin-bottom: 0.3rem; margin-top: 0.8rem; }
+  input, textarea, select { width: 100%; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: #fff; font-family: 'Vazirmatn', sans-serif; font-size: 0.95rem; direction: rtl; outline: none; transition: border 0.2s; }
+  input:focus, textarea:focus, select:focus { border-color: #f0c040; box-shadow: 0 0 8px rgba(240,192,64,0.3); }
   select option { background: #302b63; color: #fff; }
-
   textarea { height: 90px; resize: none; }
-
-  .btn {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 1rem;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Vazirmatn', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #f0c040, #e8901a);
-    color: #1a1a2e;
-  }
-
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(240,192,64,0.4); }
-
-  .btn-edit {
-    background: linear-gradient(135deg, #38bdf8, #0369a1);
-    color: #fff;
-  }
-
-  .btn-save {
-    background: linear-gradient(135deg, #4ade80, #15803d);
-    color: #fff;
-    margin-top: 0.5rem;
-  }
-
-  .btn-cancel {
-    background: rgba(255,255,255,0.1);
-    color: #ccc;
-    margin-top: 0.5rem;
-  }
-
-  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
-
-  .info-box {
-    background: rgba(240,192,64,0.1);
-    border: 1px solid rgba(240,192,64,0.3);
-    border-radius: 10px;
-    padding: 0.6rem 1rem;
-    color: #f0c040;
-    font-size: 0.85rem;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .success-box {
-    background: rgba(0,200,100,0.15);
-    border: 1px solid rgba(0,200,100,0.4);
-    border-radius: 10px;
-    padding: 0.8rem;
-    color: #5effa0;
-    text-align: center;
-    font-weight: 600;
-    margin-top: 0.8rem;
-    display: none;
-  }
-
-  .error-box {
-    background: rgba(255,80,80,0.15);
-    border: 1px solid rgba(255,80,80,0.4);
-    border-radius: 10px;
-    padding: 0.8rem;
-    color: #ff8080;
-    text-align: center;
-    margin-top: 0.8rem;
-    display: none;
-  }
-
-  /* جدول */
+  .btn { width: 100%; padding: 0.8rem; margin-top: 1rem; border: none; border-radius: 12px; font-family: 'Vazirmatn', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+  .btn-primary { background: linear-gradient(135deg, #f0c040, #e8901a); color: #1a1a2e; }
+  .btn-edit { background: linear-gradient(135deg, #38bdf8, #0369a1); color: #fff; }
+  .btn-save { background: linear-gradient(135deg, #4ade80, #15803d); color: #fff; margin-top: 0.5rem; }
+  .btn-cancel { background: rgba(255,255,255,0.1); color: #ccc; margin-top: 0.5rem; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .info-box { background: rgba(240,192,64,0.1); border: 1px solid rgba(240,192,64,0.3); border-radius: 10px; padding: 0.6rem 1rem; color: #f0c040; font-size: 0.85rem; text-align: center; margin-bottom: 1rem; }
+  .success-box { background: rgba(0,200,100,0.15); border: 1px solid rgba(0,200,100,0.4); border-radius: 10px; padding: 0.8rem; color: #5effa0; text-align: center; font-weight: 600; margin-top: 0.8rem; display: none; }
+  .error-box { background: rgba(255,80,80,0.15); border: 1px solid rgba(255,80,80,0.4); border-radius: 10px; padding: 0.8rem; color: #ff8080; text-align: center; margin-top: 0.8rem; display: none; }
   .table-wrap { overflow-x: auto; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.8rem;
-    direction: rtl;
-  }
-
-  th {
-    background: rgba(240,192,64,0.15);
-    color: #f0c040;
-    padding: 0.6rem 0.5rem;
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  td {
-    padding: 0.6rem 0.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    color: #ddd;
-    text-align: right;
-  }
-
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; direction: rtl; }
+  th { background: rgba(240,192,64,0.15); color: #f0c040; padding: 0.6rem 0.5rem; text-align: right; white-space: nowrap; }
+  td { padding: 0.6rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); color: #ddd; text-align: right; }
   tr:hover td { background: rgba(255,255,255,0.04); }
-
-  .loading {
-    text-align: center;
-    color: #888;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-
+  .loading { text-align: center; color: #888; padding: 1rem; font-size: 0.9rem; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-
   .edit-form { display: none; }
 </style>
 </head>
 <body>
 
 <h1>🏪 ثبت مشخصات مشتریان</h1>
-
 <div class="info-box" id="infoBox">در حال بارگذاری...</div>
 
 <!-- فرم ثبت -->
-<div class="card" id="addForm">
+<div class="card">
   <div class="section-title">📝 مشتری جدید</div>
-
   <div class="two-col">
     <div>
       <label>🏬 اسم فروشگاه</label>
@@ -216,48 +56,38 @@
       <input type="text" id="manager" placeholder="علی محمدی">
     </div>
   </div>
-
   <label>📍 آدرس فروشگاه</label>
   <input type="text" id="address" placeholder="تهران، خیابان ولیعصر">
-
   <label>📞 شماره تماس</label>
   <input type="tel" id="phone" placeholder="09121234567">
-
   <label>📝 توضیحات</label>
   <textarea id="notes" placeholder="هرگونه توضیح اضافه..."></textarea>
-
   <button class="btn btn-primary" id="btnAdd" onclick="addCustomer()">✅ ثبت مشتری</button>
   <div class="success-box" id="addSuccess">✅ مشتری با موفقیت ثبت شد!</div>
   <div class="error-box" id="addError"></div>
 </div>
 
-<!-- لیست مشتریان -->
+<!-- لیست -->
 <div class="card">
   <div class="section-title">📊 لیست مشتریان</div>
   <div class="table-wrap">
-    <table id="customerTable">
-      <thead>
-        <tr>
-          <th>ردیف</th>
-          <th>فروشگاه</th>
-          <th>مدیر</th>
-          <th>تماس</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody">
-        <tr><td colspan="4" class="loading">در حال بارگذاری...</td></tr>
-      </tbody>
+    <table>
+      <thead><tr><th>ردیف</th><th>فروشگاه</th><th>مدیر</th><th>تماس</th></tr></thead>
+      <tbody id="tableBody"><tr><td colspan="4" class="loading">در حال بارگذاری...</td></tr></tbody>
     </table>
   </div>
+</div>
+
+<!-- دکمه ویرایش -->
+<div class="card" id="editToggleCard" style="display:none;">
+  <button class="btn btn-edit" onclick="showEditForm()">🖊️ ویرایش مشتری</button>
 </div>
 
 <!-- فرم ویرایش -->
 <div class="card edit-form" id="editFormCard">
   <div class="edit-title">🖊️ ویرایش مشتری</div>
-
   <label>مشتری موردنظر:</label>
   <select id="editSelect" onchange="loadEditData()"></select>
-
   <div class="two-col">
     <div>
       <label>🏬 اسم فروشگاه</label>
@@ -268,52 +98,50 @@
       <input type="text" id="eManager">
     </div>
   </div>
-
   <label>📍 آدرس</label>
   <input type="text" id="eAddress">
-
   <label>📞 شماره تماس</label>
   <input type="tel" id="ePhone">
-
   <label>📝 توضیحات</label>
   <textarea id="eNotes"></textarea>
-
   <button class="btn btn-save" id="btnSave" onclick="saveEdit()">💾 ذخیره تغییرات</button>
   <button class="btn btn-cancel" onclick="cancelEdit()">❌ انصراف</button>
   <div class="success-box" id="editSuccess">✅ اطلاعات ویرایش شد!</div>
   <div class="error-box" id="editError"></div>
 </div>
 
-<div class="card" id="editToggleCard" style="display:none;">
-  <button class="btn btn-edit" onclick="showEditForm()">🖊️ ویرایش مشتری</button>
-</div>
-
 <script>
-const API = "https://script.google.com/macros/s/AKfycbx0Playvz3WAbg1k1-88Rs2VM4OfL3X4rEosYyooNxYJ1kiRtDoyF-CcoNP4XZ4aoaorA/exec";
-
+const API = "https://script.google.com/macros/s/AKfycbzIj6JQ8GfNuslfV56hN72PD72yeM3OFemkJrEVo6J1fQWyp73tMQoUJy69X0RCwrCK/exec";
 let customers = [];
+
+function jsonp(url) {
+  return new Promise((resolve, reject) => {
+    const cb = "cb_" + Date.now();
+    window[cb] = (data) => { delete window[cb]; document.head.removeChild(s); resolve(data); };
+    const s = document.createElement("script");
+    s.src = url + "?callback=" + cb;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
 
 async function loadCustomers() {
   try {
-    const res = await fetch(API);
-    const data = await res.json();
-    // ردیف اول هدر است
-    customers = data.slice(1).filter(r => r[0] !== "");
+    const data = await jsonp(API);
+    customers = data.slice(1).filter(r => r[0] !== "" && r[0] !== undefined);
     renderTable();
     renderEditSelect();
     updateInfoBox();
-    if (customers.length > 0) {
-      document.getElementById("editToggleCard").style.display = "block";
-    }
+    document.getElementById("editToggleCard").style.display = customers.length > 0 ? "block" : "none";
   } catch(e) {
     document.getElementById("infoBox").textContent = "⚠️ خطا در بارگذاری داده‌ها";
+    document.getElementById("tableBody").innerHTML = '<tr><td colspan="4" class="loading">⚠️ خطا در اتصال</td></tr>';
   }
 }
 
 function updateInfoBox() {
   const next = customers.length > 0 ? Math.max(...customers.map(c => Number(c[0]))) + 1 : 1;
-  document.getElementById("infoBox").textContent =
-    `📋 تعداد مشتریان: ${customers.length} | شماره ردیف بعدی: ${next}`;
+  document.getElementById("infoBox").textContent = "📋 تعداد مشتریان: " + customers.length + " | ردیف بعدی: " + next;
 }
 
 function renderTable() {
@@ -322,20 +150,15 @@ function renderTable() {
     tbody.innerHTML = '<tr><td colspan="4" class="loading">هنوز مشتری ثبت نشده</td></tr>';
     return;
   }
-  tbody.innerHTML = customers.map(c => `
-    <tr>
-      <td>${c[0]}</td>
-      <td>${c[1]}</td>
-      <td>${c[2]}</td>
-      <td>${c[4]}</td>
-    </tr>
-  `).join("");
+  tbody.innerHTML = customers.map(c =>
+    "<tr><td>" + c[0] + "</td><td>" + c[1] + "</td><td>" + c[2] + "</td><td>" + c[4] + "</td></tr>"
+  ).join("");
 }
 
 function renderEditSelect() {
   const sel = document.getElementById("editSelect");
   sel.innerHTML = customers.map((c, i) =>
-    `<option value="${i}">ردیف ${c[0]} — ${c[1]}</option>`
+    '<option value="' + i + '">ردیف ' + c[0] + ' — ' + c[1] + '</option>'
   ).join("");
   if (customers.length > 0) loadEditData();
 }
@@ -359,18 +182,25 @@ function showEditForm() {
 
 function cancelEdit() {
   document.getElementById("editFormCard").style.display = "none";
-  document.getElementById("editToggleCard").style.display = "block";
+  document.getElementById("editToggleCard").style.display = customers.length > 0 ? "block" : "none";
+}
+
+async function postData(payload) {
+  const res = await fetch(API, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify(payload)
+  });
 }
 
 async function addCustomer() {
   const store = document.getElementById("store").value.trim();
   const manager = document.getElementById("manager").value.trim();
   const phone = document.getElementById("phone").value.trim();
-
   const errBox = document.getElementById("addError");
   const sucBox = document.getElementById("addSuccess");
-  errBox.style.display = "none";
-  sucBox.style.display = "none";
+  errBox.style.display = "none"; sucBox.style.display = "none";
 
   if (!store) { errBox.textContent = "⚠️ اسم فروشگاه را وارد کنید"; errBox.style.display = "block"; return; }
   if (!manager) { errBox.textContent = "⚠️ نام مدیر را وارد کنید"; errBox.style.display = "block"; return; }
@@ -378,37 +208,27 @@ async function addCustomer() {
 
   const nextNum = customers.length > 0 ? Math.max(...customers.map(c => Number(c[0]))) + 1 : 1;
   const btn = document.getElementById("btnAdd");
-  btn.disabled = true;
-  btn.textContent = "⏳ در حال ثبت...";
+  btn.disabled = true; btn.textContent = "⏳ در حال ثبت...";
 
   try {
-    await fetch(API, {
-      method: "POST",
-      body: JSON.stringify({
-        action: "add",
-        row_num: nextNum,
-        store, manager,
-        address: document.getElementById("address").value.trim(),
-        phone,
-        notes: document.getElementById("notes").value.trim(),
-        date: new Date().toLocaleString("fa-IR")
-      })
+    await postData({
+      action: "add", row_num: nextNum, store, manager,
+      address: document.getElementById("address").value.trim(),
+      phone, notes: document.getElementById("notes").value.trim(),
+      date: new Date().toLocaleDateString("fa-IR") + " " + new Date().toLocaleTimeString("fa-IR")
     });
-
     sucBox.style.display = "block";
     document.getElementById("store").value = "";
     document.getElementById("manager").value = "";
     document.getElementById("address").value = "";
     document.getElementById("phone").value = "";
     document.getElementById("notes").value = "";
-    await loadCustomers();
+    setTimeout(loadCustomers, 2000);
   } catch(e) {
     errBox.textContent = "⚠️ خطا در ثبت. دوباره امتحان کنید.";
     errBox.style.display = "block";
   }
-
-  btn.disabled = false;
-  btn.textContent = "✅ ثبت مشتری";
+  btn.disabled = false; btn.textContent = "✅ ثبت مشتری";
 }
 
 async function saveEdit() {
@@ -417,44 +237,31 @@ async function saveEdit() {
   const store = document.getElementById("eStore").value.trim();
   const manager = document.getElementById("eManager").value.trim();
   const phone = document.getElementById("ePhone").value.trim();
-
   const errBox = document.getElementById("editError");
   const sucBox = document.getElementById("editSuccess");
-  errBox.style.display = "none";
-  sucBox.style.display = "none";
+  errBox.style.display = "none"; sucBox.style.display = "none";
 
   if (!store) { errBox.textContent = "⚠️ اسم فروشگاه را وارد کنید"; errBox.style.display = "block"; return; }
   if (!manager) { errBox.textContent = "⚠️ نام مدیر را وارد کنید"; errBox.style.display = "block"; return; }
   if (!phone) { errBox.textContent = "⚠️ شماره تماس را وارد کنید"; errBox.style.display = "block"; return; }
 
   const btn = document.getElementById("btnSave");
-  btn.disabled = true;
-  btn.textContent = "⏳ در حال ذخیره...";
+  btn.disabled = true; btn.textContent = "⏳ در حال ذخیره...";
 
   try {
-    await fetch(API, {
-      method: "POST",
-      body: JSON.stringify({
-        action: "edit",
-        row_num: c[0],
-        store, manager,
-        address: document.getElementById("eAddress").value.trim(),
-        phone,
-        notes: document.getElementById("eNotes").value.trim(),
-        date: new Date().toLocaleString("fa-IR") + " (ویرایش)"
-      })
+    await postData({
+      action: "edit", row_num: c[0], store, manager,
+      address: document.getElementById("eAddress").value.trim(),
+      phone, notes: document.getElementById("eNotes").value.trim(),
+      date: new Date().toLocaleDateString("fa-IR") + " (ویرایش)"
     });
-
     sucBox.style.display = "block";
-    await loadCustomers();
-    setTimeout(cancelEdit, 1500);
+    setTimeout(() => { loadCustomers(); cancelEdit(); }, 2000);
   } catch(e) {
     errBox.textContent = "⚠️ خطا در ذخیره. دوباره امتحان کنید.";
     errBox.style.display = "block";
   }
-
-  btn.disabled = false;
-  btn.textContent = "💾 ذخیره تغییرات";
+  btn.disabled = false; btn.textContent = "💾 ذخیره تغییرات";
 }
 
 loadCustomers();
